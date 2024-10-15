@@ -33,21 +33,16 @@ app.use(express.json());
 
 // Use middlware to use incoming cookies
 app.use(cookieParser());
+app.get("/", (res, req) => {
+  res.send("<h1>HELLO WORLD, Working API!</h1>");
+});
 
 // Authentication routes in URL: /api/auth
 // any routes starting with /api/auth will registered here
+
 app.use("/api/auth", authRoutes);
 
 // if deployed or production then go to frontend/dist folder
-if (process.env.NODE_ENV == "production") {
-  // get the file from the frontend that is in dist folder to get index.html
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-  //any routes will be come here and index.html will take care from there as it know other routes from here for frontend
-  app.get("*", (res, req) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
 
 // Listening the app on Server PORT: 3000
 app.listen(PORT, () => {
