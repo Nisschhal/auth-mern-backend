@@ -34,7 +34,7 @@ app.use(express.json());
 // Use middlware to use incoming cookies
 app.use(cookieParser());
 app.get("/", (res, req) => {
-  res.send("<h1>HELLO WORLD, Working API!</h1>");
+  res.json({message: "<h1>HELLO WORLD, Working API!</h1>"});
 });
 
 // Authentication routes in URL: /api/auth
