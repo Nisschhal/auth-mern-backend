@@ -33,7 +33,7 @@ app.use(express.json());
 
 // Use middlware to use incoming cookies
 app.use(cookieParser());
-app.get("/", (res, req) => {
+app.get("/", (req, res) => {
   return res.send("<h1>HELLO WORLD, Working API!</h1>");
 });
 
